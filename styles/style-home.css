@@ -49,11 +49,11 @@ header {
 .nav-links li a {
     display: block;
     color: white;
-    font-size: 20px;
     padding: 10px 25px;
     border-radius: 50px;
     transition: all 0.3s ease 0s;
     margin: 0 5px;
+    animation: fadeIn-1 1s ease-in-out;
 }
 
 .nav-links li a:hover {
@@ -114,7 +114,7 @@ section {
     font-size: 23px;
     color: white;
     font-weight: lighter;
-    animation: fadeIn-2 2s ease-in-out;
+    animation: fadeIn-2 1s ease-in-out;
     font-family: 'Poppins', sans-serif;
     float: left;
 }
@@ -142,7 +142,7 @@ article {
     display: inline-block;
     justify-content: space-between;
     align-items: center;
-    animation: fadeIn-2 2s ease-in-out;
+    animation: fadeIn-2 1s ease-in-out;
     float: right;
     color: white;
     font-weight: lighter;
@@ -173,6 +173,7 @@ article h1 {
     transition: opacity 0.25s;
     z-index: 2;
     cursor: pointer;
+    animation: fadeIn-2 2s ease-in-out;
 }
 
 .card .social-link1, .card .social-link2, .card .social-link3, .card .social-link4 {
