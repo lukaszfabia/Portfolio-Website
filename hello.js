@@ -23,24 +23,41 @@ const content = document.querySelector('.content');
 
 radioInputs.forEach(input => {
     input.addEventListener('change', () => {
-        // Hide all content first
+
         content.classList.remove('show');
 
-        // Check which radio input is selected
         if (input.checked) {
-            // Show corresponding content based on the input's value
-            if (input.value === "Java") {
-                content.innerHTML = 'Java content will be shown here.';
-            } else if (input.value === "C++") {
-                content.innerHTML = 'C++ content will be shown here.';
-            } else if (input.value === "JavaScript") {
-                content.innerHTML = 'JavaScript content will be shown here.';
-            } else if (input.value === "Python") {
-                content.innerHTML = 'Python content will be shown here.';
+            switch (input.value) {
+                case 'Java':
+                    showContentWithAnimation('Java content');
+                    break;
+                case 'Python':
+                    showContentWithAnimation('Python content');
+                    break;
+                case 'JavaScript':
+                    showContentWithAnimation('JS content');
+                    break;
+                case 'C++':
+                    showContentWithAnimation('cpp content');
+                    break;
+                case 'HTML & CSS':
+                    showContentWithAnimation('html css content');
+                    break;
+                case 'Assembly':
+                    showContentWithAnimation('asm content');
+                    break;
+                case 'Swift':
+                    showContentWithAnimation('swift content');
+                    break;
             }
-
-            // Show the content and align it to the top
-            content.classList.add('show');
         }
     });
+    showContentWithAnimation('Please select a language');
 });
+function showContentWithAnimation(text) {
+    content.innerHTML = text;
+    // Trigger the fade-in animation by adding the 'show' class with a slight delay
+    setTimeout(() => {
+        content.classList.add('show');
+    }, 10);
+}
