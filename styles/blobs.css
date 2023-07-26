@@ -14,7 +14,7 @@
     background: linear-gradient(135deg, #05165d 0%, #080262 30%, #33048c 50%, #5404b6 70%, #6c5fc7 100%);
     border-radius: 24% 60% 40% 40%/ 27% 46% 54% 73%;
     mix-blend-mode: color-dodge;
-    animation: blobAnimation 40s infinite alternate;
+    animation: blobAnimation 30s infinite alternate;
     transition: cubic-bezier(0.07, 0.83, 0.7, 0.99);
     filter: blur(30px);
 }

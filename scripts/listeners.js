@@ -61,3 +61,35 @@ function showContentWithAnimation(text) {
         content.classList.add('show');
     }, 10);
 }
+
+const galleryImages = document.querySelectorAll('.gallery-img');
+const galleryContainer = document.querySelector('.gallery');
+const articleGallery = document.querySelector('.article-gallery');
+
+let currentImageIndex = 0;
+let autoChangeInterval;
+
+function showImage(index) {
+    galleryImages.forEach((img, i) => {
+        img.style.display = i === index ? 'block' : 'none';
+    });
+}
+
+function showNextImage() {
+    currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+    showImage(currentImageIndex);
+}
+
+function startAutoChange() {
+    autoChangeInterval = setInterval(showNextImage, 3000);
+}
+
+function stopAutoChange() {
+    clearInterval(autoChangeInterval);
+}
+
+articleGallery.addEventListener('mouseover', stopAutoChange);
+articleGallery.addEventListener('mouseout', startAutoChange);
+
+showImage(currentImageIndex);
+startAutoChange();
