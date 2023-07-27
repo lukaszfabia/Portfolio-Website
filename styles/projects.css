@@ -21,7 +21,7 @@
 
 /* Początkowy styl dla zdjęć w stosie */
 .stacked-images img {
-    width: 300px;
+    width: 350px;
     height: auto;
     cursor: pointer;
     transition: transform 0.3s, z-index 0.3s;
@@ -39,12 +39,16 @@
     animation: fadeIn-2 1s ease-in-out 0;
 }
 
+.stacked-images img:nth-child(1):hover{
+    animation: fadeIn-2 1s ease-in-out 0;
+}
+
 .stacked-images img:nth-child(2) {
     animation: fadeIn-2 2s ease-in-out 1;
 }
 
 .stacked-images img:nth-child(3) {
-    animation: fadeIn-2 3s ease-in-out 2;
+    animation: fadeIn-2 3s ease-in-out;
 }
 
 
@@ -102,4 +106,10 @@
 
 .css-buttons-io:active {
     transform: scale(0.95);
+}
+
+.list-start{
+    font-weight: 400;
+    font-size: 17px;
+    animation: fadeIn-2 2s ease-in-out;
 }

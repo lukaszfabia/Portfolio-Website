@@ -17,79 +17,43 @@ burger.addEventListener('click', () => {
     isExpanded = !isExpanded;
 });
 
+// JavaScript
+class RadioInputsHandler {
+    constructor() {
+        this.radioInputs = document.querySelectorAll('input[type="radio"][name="languages"]');
+        this.content = document.querySelector('.content');
+        this.init();
+    }
 
-const radioInputs = document.querySelectorAll('.radio-inputs .radio input');
-const content = document.querySelector('.content');
+    init() {
+        this.radioInputs.forEach(input => {
+            input.addEventListener('change', () => {
+                this.content.classList.remove('show');
+                if (input.checked) {
+                    const htmlContent = `<p class="description">${input.value} content</p>`;
+                    this.showContentWithAnimation(htmlContent);
+                }
+            });
+        });
 
-radioInputs.forEach(input => {
-    input.addEventListener('change', () => {
+        const defaultContent = '<p class="description">Most used IDE</p>' +
+            '<img src="../images/icons/intelij.png" alt="intelij" class="icon">' +
+            '<img src="../images/icons/vs%20code.png" alt=vscode class="icon">' +
+            '<img src="../images/icons/xcode.png" alt="xcode" class="icon">';
+        this.showContentWithAnimation(defaultContent);
+    }
 
-        content.classList.remove('show');
+    showContentWithAnimation(htmlContent) {
+        this.content.innerHTML = htmlContent;
+        // Trigger the fade-in animation by adding the 'show' class with a slight delay
+        setTimeout(() => {
+            this.content.classList.add('show');
+        }, 10);
+    }
+}
 
-        if (input.checked) {
-            switch (input.value) {
-                case 'Java':
-                    showContentWithAnimation('Java content');
-                    break;
-                case 'Python':
-                    showContentWithAnimation('Python content');
-                    break;
-                case 'JavaScript':
-                    showContentWithAnimation('JS content');
-                    break;
-                case 'C++':
-                    showContentWithAnimation('cpp content');
-                    break;
-                case 'HTML & CSS':
-                    showContentWithAnimation('html css content');
-                    break;
-                case 'Assembly':
-                    showContentWithAnimation('asm content');
-                    break;
-                case 'Swift':
-                    showContentWithAnimation('swift content');
-                    break;
-            }
-        }
-    });
-    showContentWithAnimation('Please select a language');
+// Create an instance of the class when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    new RadioInputsHandler();
 });
-function showContentWithAnimation(text) {
-    content.innerHTML = text;
-    // Trigger the fade-in animation by adding the 'show' class with a slight delay
-    setTimeout(() => {
-        content.classList.add('show');
-    }, 10);
-}
 
-const galleryImages = document.querySelectorAll('.gallery-img');
-const galleryContainer = document.querySelector('.gallery');
-const articleGallery = document.querySelector('.article-gallery');
-
-let currentImageIndex = 0;
-let autoChangeInterval;
-
-function showImage(index) {
-    galleryImages.forEach((img, i) => {
-        img.style.display = i === index ? 'block' : 'none';
-    });
-}
-
-function showNextImage() {
-    currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
-    showImage(currentImageIndex);
-}
-
-function startAutoChange() {
-    autoChangeInterval = setInterval(showNextImage, 3000);
-}
-
-function stopAutoChange() {
-    clearInterval(autoChangeInterval);
-}
-
-articleGallery.addEventListener('mouseover', stopAutoChange);
-articleGallery.addEventListener('mouseout', startAutoChange);
-
-showImage(currentImageIndex);
-startAutoChange();
